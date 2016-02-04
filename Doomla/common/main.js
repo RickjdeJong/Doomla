@@ -1,0 +1,1 @@
+$("article").hide().fadeIn("slow");
