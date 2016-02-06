@@ -20,7 +20,7 @@
 			$title = $menu[$i]["title"];
 			$content = $menu[$i]["content"];
 			$menuList = $menu[$i]["menu"];
-			$tableRows .= "<tr><td>$id</td><td>$page</td><td>$title</td><td>$content</td><td>$menuList</td><td><button class='edit'><a href='edit.php?id=$id'>Edit</a></button></td><td><button class='edit'><a href='remove.php?id=$id'>Remove</a></button></td></tr>";
+			$tableRows .= "<tr><td>$id</td><td>$page</td><td>$title</td><td>$content</td><td>$menuList</td><td><a href='edit.php?id=$id'><button class='edit'>Edit</button></a></td><td><a href='remove.php?id=$id'><button class='edit'>Remove</button></a></td></tr>";
 		}
 		return $tableRows;
 	}

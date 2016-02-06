@@ -12,18 +12,14 @@
 	}
 
 	// [ IF STATEMENTS ] //
-
-	if ( empty($_GET['id']) OR !is_numeric($_GET['id'])){
-		header("Location: index.php");
-	} else {
+	if ( isset($_GET['id']) ){
 		$id = $_GET['id'];
 		$results = getInfo($id);
-
-		$id = $results['id'];
-		$page = $results['page'];
-		$title = $results['title'];
-		$content = $results['content'];
-		$menu = $results['menu'];
+		$id = $results["id"];
+		$page = $results["page"];
+		$title = $results["title"];
+		$content = $results["content"];
+		$menu = $results["menu"];
 	}
 ?>
 
@@ -43,7 +39,7 @@
 				<div class="form-group">
 			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">ID</label>
 			    	<div class="col-sm-10">
-					<input type="text" class="form-control" name="id" value="<?=$id?>">
+					<input type="text" class="form-control" name="id" disabled="true" value="<?=$id?>">
 					</div>
 				</div>
 				<div class="form-group">
@@ -71,7 +67,7 @@
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
-				<button type="submit" class="btn btn-default">Cancel</button>
+				<a href="index.php"><button class="btn btn-default">Cancel</button></a>
 			</form>
 		</div>
 	</article>
