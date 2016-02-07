@@ -1,18 +1,32 @@
 <?php 
 	// [ RETRIEVING CONFIG ] //
 	include "../common/sql.php";
-
 	// [ FUNCTIONS ] //
 	function getInfo($id){
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
-		$sql = "SELECT * FROM `pagecontent` WHERE id = '$id'";
+		$sql = "SELECT * FROM pagecontent WHERE id = '$id'";
 		$result = $db->query($sql);
 		$results = $result->fetch_assoc();
 		return $results;
 	}
-
-	// [ IF STATEMENTS ] //
-	if ( isset($_GET['id']) ){
+	function updateInfo($page, $title, $content, $menu, $id){
+		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
+		$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu' WHERE id='$id'";
+		$result = $db->query($sql);
+		$db->close();
+	}
+	if ( isset($_POST['page']) ) {
+		$page = $_POST["page"];
+		$title = $_POST["title"];
+		$content = $_POST["content"];
+		$menu = $_POST["menu"];
+		$id = $_POST["id"];
+		var_dump($id);
+		updateInfo($page, $title, $content, $menu, $id);
+		header("Location: index.php");
+	}
+		// [ IF STATEMENTS ] //
+	if ( isset($_GET['id']) ) {
 		$id = $_GET['id'];
 		$results = getInfo($id);
 		$id = $results["id"];
@@ -35,11 +49,11 @@
 <body>
 	<article>
 		<h1>Editing Id : <?=$id?> </h1><br>
-			<form id="editform" class="form-horizontal" action="" method="post" accept-charset="utf-8">
+			<form id="editform" class="form-horizontal" action="?update=1" method="post" accept-charset="utf-8">
 				<div class="form-group">
 			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">ID</label>
 			    	<div class="col-sm-10">
-					<input type="text" class="form-control" name="id" disabled="true" value="<?=$id?>">
+					<input type="text" class="form-control" name="id"  value="<?=$id?>">
 					</div>
 				</div>
 				<div class="form-group">
@@ -51,7 +65,7 @@
 				<div class="form-group">
 			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">title</label>
 			    	<div class="col-sm-10">
-					<input type="text" class="form-control" name="title" value="<?=$page?>">
+					<input type="text" class="form-control" name="title" value="<?=$title?>">
 					</div>
 				</div>
 				<div class="form-group">
