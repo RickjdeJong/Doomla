@@ -9,14 +9,12 @@
 		$results = $result->fetch_assoc();
 		return $results;
 	}
-<<<<<<< HEAD
 	function updateInfo($page, $title, $content, $menu, $id){
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
 		$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu' WHERE id='$id'";
 		$result = $db->query($sql);
 		$db->close();
 	}
-=======
 
 	function updateInfo($page, $title, $content, $menu, $id){
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
@@ -25,7 +23,6 @@
 		$db->close();
 	}
 
->>>>>>> origin/master
 	if ( isset($_POST['page']) ) {
 		$page = $_POST["page"];
 		$title = $_POST["title"];
@@ -34,10 +31,7 @@
 		$id = $_POST["id"];
 		var_dump($id);
 		updateInfo($page, $title, $content, $menu, $id);
-<<<<<<< HEAD
 		header("Location: index.php");
-=======
->>>>>>> origin/master
 	}
 		// [ IF STATEMENTS ] //
 	if ( isset($_GET['id']) ) {
