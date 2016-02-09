@@ -39,3 +39,7 @@ table td{
 table tr:nth-of-type(even) {
     background-color: #fff;
 }
+
+.create{
+	float: right;
+}

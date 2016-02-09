@@ -9,6 +9,9 @@
 </head>
 <body>
 	<div class="content">
+		<div class="create">
+			<a href="create.php">+ create</a>
+		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>

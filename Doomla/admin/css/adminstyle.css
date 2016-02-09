@@ -9,5 +9,6 @@ article{
 	margin: 0 auto;
 }
 
-#editform{
+.create{
+	display: none;
 }

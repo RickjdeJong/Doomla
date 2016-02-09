@@ -1,5 +1,5 @@
 <?php 
-	include "logic/edit_logic.php";
+	include "logic/create_logic.php";
 ?>
 
 <!DOCTYPE html>
@@ -7,41 +7,40 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Edit Id: <?=$title?> </title>
+	<title>Create a page</title>
 	<link rel="stylesheet" href="css/adminstyle.css">
 	<link rel="stylesheet" href="css/bootstrapStyle.css">
 </head>
 <body>
 	<article>
-		<h1>Editing Id : <?=$title?> </h1><br>
+		<h1>Create a page</h1><br>
 			<form id="editform" class="form-horizontal" action="" method="post" accept-charset="utf-8">
 				<div class="form-group">
 			    	<div class="col-sm-10">
-					<input type="hidden" class="form-control" name="id"  value="<?=$id?>">
 					</div>
 				</div>
 				<div class="form-group">
 			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">page</label>
 			    	<div class="col-sm-10">
-					<input type="text" class="form-control" name="page" value="<?=$page?>">
+					<input type="text" class="form-control" name="page">
 					</div>
 				</div>
 				<div class="form-group">
 			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">title</label>
 			    	<div class="col-sm-10">
-					<input type="text" class="form-control" name="title" value="<?=$title?>">
+					<input type="text" class="form-control" name="title">
 					</div>
 				</div>
 				<div class="form-group">
 			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">content</label>
 			    	<div class="col-sm-10">
-					<textarea class="form-control" name="content" rows="3" ><?=$content?></textarea>
+					<textarea class="form-control" name="content" rows="3" ></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">menu</label>
 			    	<div class="col-sm-10">
-					<input type="text" class="form-control" name="menu" value="<?=$menu?>">
+					<input type="text" class="form-control" name="menu">
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
