@@ -10,9 +10,9 @@
 		return $results;
 	}
 
-	function updateInfo($page, $title, $content, $menu, $menuorder, $id){
+	function updateInfo($page, $title, $content, $menu, $menuorder, $template, $id){
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
-		$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu', menuorder='$menuorder' WHERE id='$id'";
+		$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu', menuorder='$menuorder', template='$template' WHERE id='$id'";
 		$result = $db->query($sql);
 		$db->close();
 	}
@@ -25,8 +25,8 @@
 		$menu = $_POST["menu"];
 		$menuorder = (int)$_POST["menuorder"];
 		$id = $_POST["id"];
-		var_dump($menuorder);
-		updateInfo($page, $title, $content, $menu, $menuorder, $id);
+		$template = $_POST["template"];
+		updateInfo($page, $title, $content, $menu, $menuorder, $template, $id);
 		header("Location: index.php");
 	}
 
@@ -39,5 +39,6 @@
 		$content = $results["content"];
 		$menu = $results["menu"];
 		$menuorder = $results["menuorder"];
+		$template = $results["template"];
 	}
 ?>

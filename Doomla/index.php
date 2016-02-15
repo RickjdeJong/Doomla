@@ -32,7 +32,7 @@
 		// Defining the Globals variables to Local variables
 		GLOBAL $db;
 		GLOBAL $pageName;
-		$sql = "SELECT menu, page, menuorder FROM `pagecontent` ORDER BY menuorder ASC";
+		$sql = "SELECT menu, page, menuorder, template FROM `pagecontent` ORDER BY menuorder ASC";
 		$result = $db->query($sql);
 		$menu = $result->fetch_all(MYSQLI_ASSOC);
 		$option = "<ul>";
@@ -49,6 +49,12 @@
 	}
 	$menu = getMenu();
 	$rows = getInfo("page");
+	if ($rows['template'] == 'normal'){
+		$css='<link rel="stylesheet" href="css/style.css">';
+	}
+	elseif ($rows['template'] == 'night') {
+		$css='<link rel="stylesheet" href="css/nightstyle.css">';
+	}
 	include "common/content.php";
 	// include "common/footer.php";
 ?>

@@ -21,6 +21,7 @@
 					<th>Content</th>
 					<th>Menu Name</th>
 					<th>Menu Order</th>
+					<th>Template</th>
 					<th>Edit</th>
 					<th>Remove</th>
 				</tr>

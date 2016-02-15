@@ -11,7 +11,8 @@
 			$content = $menu[$i]["content"];
 			$menuList = $menu[$i]["menu"];
 			$menuorder = $menu[$i]["menuorder"];
-			$tableRows .= "<tr><td>$id</td><td>$page</td><td>$title</td><td>$content</td><td>$menuList</td><td>$menuorder</td><td><a href='edit.php?id=$id'><button class='edit'>Edit</button></a></td><td><a href='remove.php?id=$id'><button class='edit'>Remove</button></a></td></tr>";
+			$template = $menu[$i]["template"];
+			$tableRows .= "<tr><td>$id</td><td>$page</td><td>$title</td><td>$content</td><td>$menuList</td><td>$menuorder</td><td>$template</td><td><a href='edit.php?id=$id'><button class='edit'>Edit</button></a></td><td><a href='remove.php?id=$id'><button class='edit'>Remove</button></a></td></tr>";
 		}
 		return $tableRows;
 	}
