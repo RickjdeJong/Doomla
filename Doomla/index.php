@@ -32,7 +32,7 @@
 		// Defining the Globals variables to Local variables
 		GLOBAL $db;
 		GLOBAL $pageName;
-		$sql = "SELECT menu, page FROM `pagecontent`";
+		$sql = "SELECT menu, page, menuorder FROM `pagecontent` ORDER BY menuorder ASC";
 		$result = $db->query($sql);
 		$menu = $result->fetch_all(MYSQLI_ASSOC);
 		$option = "<ul>";

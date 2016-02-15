@@ -33,15 +33,21 @@
 					</div>
 				</div>
 				<div class="form-group">
-			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">content</label>
-			    	<div class="col-sm-10">
-					<textarea class="form-control" name="content" rows="3" ><?=$content?></textarea>
-					</div>
-				</div>
-				<div class="form-group">
 			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">menu</label>
 			    	<div class="col-sm-10">
 					<input type="text" class="form-control" name="menu" value="<?=$menu?>">
+					</div>
+				</div>
+				<div class="form-group">
+			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">menuorder</label>
+			    	<div class="col-sm-10">
+					<input type="number" class="form-control" name="menuorder" value="<?=$menuorder?>">
+					</div>
+				</div>
+				<div class="form-group">
+			    	<label for="exampleInputEmail1" class="col-sm-2 control-label">content</label>
+			    	<div class="col-sm-10">
+					<textarea class="form-control" name="content" rows="3" ><?=$content?></textarea>
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
