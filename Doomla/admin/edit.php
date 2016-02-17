@@ -23,19 +23,19 @@
 				<div class="form-group">
 			    	<label class="col-sm-2 control-label">page</label>
 			    	<div class="col-sm-10">
-					<input type="text" class="form-control" name="page" value="<?=$page?>">
+					<input type="text" required="required" class="form-control" name="page" value="<?=$page?>">
 					</div>
 				</div>
 				<div class="form-group">
 			    	<label class="col-sm-2 control-label">title</label>
 			    	<div class="col-sm-10">
-						<input type="text" class="form-control" name="title" value="<?=$title?>">
+						<input type="text" required="required" class="form-control" name="title" value="<?=$title?>">
 					</div>
 				</div>
 				<div class="form-group">
 			    	<label class="col-sm-2 control-label">menu</label>
 			    	<div class="col-sm-10">
-						<input type="text" class="form-control" name="menu" value="<?=$menu?>">
+						<input type="text" required="required" class="form-control" name="menu" value="<?=$menu?>">
 					</div>
 				</div>
 				<div class="form-group">
@@ -47,7 +47,7 @@
 				<div class="form-group">
 			    	<label class="col-sm-2 control-label">template</label>
 			    	<div class="col-sm-10">
-			    		<select name="template" class="form-control">
+			    		<select name="template" required="required" class="form-control">
 			    			<option value="normal">Normal</option>
 							<option value="night">Night</option>
 						</select>
