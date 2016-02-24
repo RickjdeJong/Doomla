@@ -1,13 +1,6 @@
 <?php 
 
-	include "/common/sql.php";
-	include "/common/checkcookie.php";
-
-	$allowed = false;
-	$allowed = checkCookie();
-	if ($allowed == false){
-		header("Location: login.php");
-	}
+	include "../common/sql.php";
 
 	function getInfo($id){
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
@@ -47,11 +40,5 @@
 		$menu = $results["menu"];
 		$menuorder = $results["menuorder"];
 		$template = $results["template"];
-	}
-	$allowed = false;
-	$allowed = checkCookie();
-	if ($allowed == true){
-	} else{
-		header("Location: login.php");
 	}
 ?>
