@@ -50,10 +50,6 @@ table, td, th {
 	color : black;
 }
 
-img{
-	padding-bottom: 5%;
-}
-
 td, th {
 	padding : 2px;
 }
@@ -215,7 +211,15 @@ nav a{
 	font-style: normal;
 }
 
+a.active{
+    text-decoration: underline;
+}
+
 .logo{
-	width: 10%;
 	margin: 0 auto;
+	text-align: center;
+}
+
+.logo img{
+	padding-bottom: 2%;
 }

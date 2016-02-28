@@ -4,6 +4,11 @@
 	$cookie_name = "token";
 	$cookie_name2 = "expiry";
 	$cookie_name3 = "username";
+	$allowed = false;
+	$allowed = checkCookie();
+	if ($allowed == true){
+		header("Location: index.php");
+	}
 
 	function hashPassword($password){
 		$salt = "igd84965123asd89456wadsfw1a8shtfh4f5gjs";
@@ -68,6 +73,7 @@
 			setcookie($cookie_name2, $expiry);
 			setcookie($cookie_name3, $username);
 			updateToken($token, $expiry, $username);
+			header("Location: index.php");
 		}
 	}
 

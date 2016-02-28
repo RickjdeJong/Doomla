@@ -8,19 +8,24 @@
 		header("Location: login.php");
 	}
 
-	function createInfo($page, $title, $content, $menu){
+	function createInfo($page, $title, $content, $menu, $menuorder, $template){
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
-		$sql = "INSERT INTO `pagecontent`(`page`, `title`, `content`, `menu`) VALUES ('$page','$title','$content','$menu')";
+		$sql = "INSERT INTO `pagecontent`(`page`, `title`, `content`, `menu`, `menuorder`, `template`) VALUES ('$page','$title','$content','$menu','$menuorder','$template')";
 		$result = $db->query($sql);
 		$db->close();
 	}
 
-	if ( isset($_POST['page']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['menu']) ){
+	if ( isset($_POST['page']) ){
 		$page = $_POST["page"];
 		$title = $_POST["title"];
 		$content = $_POST["content"];
 		$menu = $_POST["menu"];
-		createInfo($page, $title, $content, $menu);
+		$menuorder = (int)$_POST["menuorder"];
+		$template = $_POST["template"];
+		createInfo($page, $title, $content, $menu, $menuorder, $template);
+		header("Location: index.php");
+	}
+	elseif (isset($_POST['button']) == "cancel") {
 		header("Location: index.php");
 	}
 	$allowed = false;

@@ -10,13 +10,13 @@
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
 <body>
-	<div class="logo">
-		<img src="images/Doomla.png" id="logo">
-	</div>
-	<nav>
-		<?=$menu?>
-	</nav>
 	<header>
+		<div class="logo">
+			<img src="images/Doomla.png" id="logo">
+		</div>
+		<nav>
+			<?=$menu?>
+		</nav>
 	</header>
 	<article>
 		<div class="content">
@@ -24,3 +24,4 @@
 		</div>
 	</article>
 	<script src="common/main.js"></script>
+</body>

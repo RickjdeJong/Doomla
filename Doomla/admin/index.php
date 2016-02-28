@@ -1,5 +1,12 @@
 <?php 
 	include "../common/sql.php";
+	include "/common/checkcookie.php";
+
+	$allowed = false;
+	$allowed = checkCookie();
+	if ($allowed == false){
+		header("Location: login.php");
+	}
 
 	function toHTML(){
 		GLOBAL $menu;
@@ -26,6 +33,11 @@
 	$sql = "SELECT * FROM `pagecontent` ORDER BY menuorder ASC";
 	$result = $db->query($sql);
 	$menu = $result->fetch_all(MYSQLI_ASSOC);
+	if( isset($_GET['permission']) == "denied"){
+		echo "<script type='text/javascript'>";
+		echo "alert('You do not have permission!')";
+		echo "</script>";
+	}
 	include "common/content.php";
 
 

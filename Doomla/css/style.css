@@ -50,9 +50,6 @@ table, td, th {
 	color : black;
 }
 
-img{
-	padding-bottom: 5%;
-}
 
 td, th {
 	padding : 2px;
@@ -188,12 +185,11 @@ footer a{
         display: none;
     }
     nav{
-    	margin-top: 5%;
+    	margin-top: 3%;
     }
 }
 
 nav{
-	width: 100%;
 	text-align: center;
 }
 
@@ -211,11 +207,28 @@ nav img{
 
 nav a{
 	text-decoration: none;
+	text-align: center;
 	font-family: 'Proxima Nova Semibold';
 	font-style: normal;
 }
 
+a.active{
+    text-decoration: underline;
+}
+
 .logo{
-	width: 10%;
 	margin: 0 auto;
+	text-align: center;
+}
+
+.logo img{
+	padding-bottom: 2%;
+}
+
+nav ul.submenu{
+	display: none;
+}
+
+nav ul li a#normal:hover{
+	color: lightgray;
 }

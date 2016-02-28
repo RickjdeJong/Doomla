@@ -1,25 +1,19 @@
 <?php
 	include "common/sql.php";
-	   	 	// checking if page index exists
+
 	if (empty($_GET) OR is_numeric($_GET['page']) OR $_GET['page'] == "" ){
-			// Setting the PageName variable to home
-			// Redirecting to page given
 		header("Location: ?page=home");
 	}
 	elseif(isset($_GET['page'])) {
-			// Setting the PageName variable
 	    $pageName = $_GET['page'];
 	}
-		// Create connection
 	$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
 
-		// Check connection
 	if ($db->connect_error) {
 	    die("Connection failed: " . $db->connect_error);
 	}
 
 	function getInfo($info){
-		// Defining the Globals variables to Local variables
 		GLOBAL $pageName;
 		GLOBAL $db;
 		$sql = "SELECT * FROM `pagecontent` WHERE '$pageName' = page";
@@ -29,20 +23,39 @@
 	}
 	
 	function getMenu(){
-		// Defining the Globals variables to Local variables
 		GLOBAL $db;
 		GLOBAL $pageName;
-		$sql = "SELECT menu, page, menuorder, template FROM `pagecontent` ORDER BY menuorder ASC";
+		$sql = "SELECT * FROM `pagecontent` ORDER BY menuorder ASC";
 		$result = $db->query($sql);
 		$menu = $result->fetch_all(MYSQLI_ASSOC);
 		$option = "<ul>";
 		foreach ($menu as $item) {
+			$id = $item["id"];
 			$class = "";
-			if($pageName == $item['page'])
-				{
+			if($pageName == $item['page']){
 					$class = "id='active'";
+			}
+			if($item["pagecontent_id"] != null){
+				continue;
+			}
+			$option .= "<li><a id='normal'href='?page=".$item["page"]."'".$class.">".$item['menu']."</a>";
+			$sql = "select * from pagecontent where pagecontent_id='$id'";
+			$result = $db->query($sql);
+			$subpages = $result->fetch_all(MYSQLI_ASSOC);
+			if ($subpages != null){
+				$option .= "<ul class='submenu'>";
+				foreach ($subpages as $subpage) {
+					$spage = $subpage["page"];
+					$class = $spage == $pageName ? "class='active'" : "";
+					$menuoption = $subpage["menu"];
+					$option .= "<li><a href='?page=$spage' $class>$menuoption</a>";
 				}
-			$option .= "<li><a href='?page=" . $item["page"] . "'". $class . ">" . $item['menu'] . "</a></li>";
+
+				$option .= "</ul>";
+
+			}
+
+			$option.= "</li>";
 		}
 		$option .= "</ul>";
 		return $option;
@@ -56,5 +69,4 @@
 		$css='<link rel="stylesheet" href="css/nightstyle.css">';
 	}
 	include "common/content.php";
-	// include "common/footer.php";
 ?>

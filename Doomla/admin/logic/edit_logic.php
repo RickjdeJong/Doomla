@@ -51,6 +51,14 @@
 	$allowed = false;
 	$allowed = checkCookie();
 	if ($allowed == true){
+		if($template == "night"){
+			$selected = '<option value="normal">Normal</option>
+							<option selected="selected" value="night">Night</option>';
+		}
+		elseif ($template == "normal") {
+			$selected = '<option selected="selected" value="normal">Normal</option>
+							<option value="night">Night</option>';
+		}
 	} else{
 		header("Location: login.php");
 	}

@@ -1,3 +1,7 @@
+<?php 
+	include "logic/users_logic.php";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +15,16 @@
 <body>
 	<div class="content">
 		<div class="create">
-			<i class="fa fa-user"></i><a href="users.php">Users</a>
-			<i class="fa fa-plus"></i><a href="create.php">Create Page</a>
+			<i class="fa fa-home"></i><a href="index.php">Index</a>
+			<i class="fa fa-plus"></i><a href="createuser.php">Create User</a>
 			<i class="fa fa-sign-out"></i><a href="logout.php">Log out</a>
 		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Page</th>
-					<th>Page Title</th>
-					<th>Content</th>
-					<th>Menu Name</th>
-					<th>Menu Order</th>
-					<th>Template</th>
+					<th>Username</th>
+					<th>Role</th>
 					<th>Edit</th>
 					<th>Remove</th>
 				</tr>
