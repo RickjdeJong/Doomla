@@ -17,9 +17,9 @@
 		return $results;
 	}
 
-	function updateInfo($page, $title, $content, $menu, $menuorder, $template, $id){
+	function updateInfo($page, $title, $content, $menu, $menuorder, $template, $id, $onder){
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
-		$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu', menuorder='$menuorder', template='$template' WHERE id='$id'";
+		$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu', menuorder='$menuorder', template='$template', pagecontent_id='$onder' WHERE id='$id'";
 		$result = $db->query($sql);
 		$db->close();
 	}
@@ -33,7 +33,8 @@
 		$menuorder = (int)$_POST["menuorder"];
 		$id = $_POST["id"];
 		$template = $_POST["template"];
-		updateInfo($page, $title, $content, $menu, $menuorder, $template, $id);
+		$onder = $_POST["onder"];
+		updateInfo($page, $title, $content, $menu, $menuorder, $template, $id, $onder);
 		header("Location: index.php");
 	}
 
@@ -47,6 +48,14 @@
 		$menu = $results["menu"];
 		$menuorder = $results["menuorder"];
 		$template = $results["template"];
+		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
+		$sql2 = "SELECT id FROM pagecontent WHERE pagecontent_id IS NULL";
+		$menuitem = $db->query($sql2);
+		$onder = "";
+		$menuitem = $menuitem->fetch_all(MYSQLI_ASSOC);
+		for ($i=0; $i < count($menuitem); $i++) {
+			$onder .= "<option value='".$menuitem[$i]['id']."'>".$menuitem[$i]['id']."</option>";
+		}
 	}
 	$allowed = false;
 	$allowed = checkCookie();

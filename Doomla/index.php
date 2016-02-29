@@ -48,7 +48,7 @@
 					$spage = $subpage["page"];
 					$class = $spage == $pageName ? "class='active'" : "";
 					$menuoption = $subpage["menu"];
-					$option .= "<li><a href='?page=$spage' $class>$menuoption</a>";
+					$option .= "<li><a href='?page=$spage' $class>$menuoption</a><br>";
 				}
 
 				$option .= "</ul>";
@@ -69,4 +69,5 @@
 		$css='<link rel="stylesheet" href="css/nightstyle.css">';
 	}
 	include "common/content.php";
+
 ?>

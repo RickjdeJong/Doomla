@@ -210,6 +210,7 @@ nav a{
 	text-align: center;
 	font-family: 'Proxima Nova Semibold';
 	font-style: normal;
+	font-size: 15pt;
 }
 
 a.active{
