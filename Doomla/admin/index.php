@@ -1,43 +1,42 @@
-<?php 
-	include "../common/sql.php";
-	include "/common/checkcookie.php";
+<?php
+	include"logic/index_logic.php" 
+?>
 
-	$allowed = false;
-	$allowed = checkCookie();
-	if ($allowed == false){
-		header("Location: login.php");
-	}
-
-	function toHTML(){
-		GLOBAL $menu;
-		$tableRows = "";
-		for ($i = 0; $i < count($menu); $i++){
-			$id = $menu[$i]["id"];
-			$page = $menu[$i]["page"];
-			$title = $menu[$i]["title"];
-			$content = $menu[$i]["content"];
-			$menuList = $menu[$i]["menu"];
-			$menuorder = $menu[$i]["menuorder"];
-			$template = $menu[$i]["template"];
-			$tableRows .= "<tr><td>$id</td><td>$page</td><td>$title</td><td>$content</td><td>$menuList</td><td>$menuorder</td><td>$template</td><td><a href='edit.php?id=$id'><button class='edit'>Edit Page</button></a></td><td><a href='remove.php?id=$id'><button class='edit'>Remove</button></a></td></tr>";
-		}
-		return $tableRows;
-	}
-
-	$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
-
-	if ($db->connect_error) {
-	    die("Connection failed: " . $db->connect_error);
-	}
-
-	$sql = "SELECT * FROM `pagecontent` ORDER BY menuorder ASC";
-	$result = $db->query($sql);
-	$menu = $result->fetch_all(MYSQLI_ASSOC);
-	if( isset($_GET['permission']) == "denied"){
-		echo "<script type='text/javascript'>";
-		echo "alert('You do not have permission!')";
-		echo "</script>";
-	}
-	include "common/content.php";
-
-
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Admin Panel</title>
+	<link rel="stylesheet" href="css/bootstrapStyle.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="content">
+		<div class="create">
+			<i class="fa fa-user"></i><a href="users.php">Users</a>
+			<i class="fa fa-plus"></i><a href="create.php">Create Page</a>
+			<i class="fa fa-sign-out"></i><a href="logout.php">Log out</a>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Page</th>
+					<th>Page Title</th>
+					<th>Content</th>
+					<th>Menu Name</th>
+					<th>Menu Order</th>
+					<th>Template</th>
+					<th>Edit</th>
+					<th>Remove</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?=toHTML()?>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
