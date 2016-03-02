@@ -17,9 +17,8 @@
 		return $results;
 	}
 
-	function updateInfo($page, $title, $content, $menu, $menuorder, $template, $id, $onder){
+	function updateInfo($page, $title, $content, $menu, $menuorder, $template, $id, $onder, $sql){
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
-		$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu', menuorder='$menuorder', template='$template', pagecontent_id='$onder' WHERE id='$id'";
 		$result = $db->query($sql);
 		$db->close();
 	}
@@ -34,7 +33,15 @@
 		$id = $_POST["id"];
 		$template = $_POST["template"];
 		$onder = $_POST["onder"];
-		updateInfo($page, $title, $content, $menu, $menuorder, $template, $id, $onder);
+		if ($onder == 'none'){
+			$onder = 'NULL';
+			$onder = mysql_real_escape_string($onder);
+			$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu', menuorder='$menuorder', template='$template', pagecontent_id=NULL WHERE id='$id'";
+		}
+		else{
+			$sql = "UPDATE pagecontent SET page='$page', title='$title', content='$content', menu='$menu', menuorder='$menuorder', template='$template', pagecontent_id='$onder' WHERE id='$id'";
+		}
+		updateInfo($page, $title, $content, $menu, $menuorder, $template, $id, $onder, $sql);
 		header("Location: index.php");
 	}
 
@@ -49,12 +56,12 @@
 		$menuorder = $results["menuorder"];
 		$template = $results["template"];
 		$db = new mysqli(SERVERNAME, USERNAME, PASSWORD, DBNAME);
-		$sql2 = "SELECT id FROM pagecontent WHERE pagecontent_id IS NULL";
+		$sql2 = "SELECT id, menu FROM pagecontent WHERE pagecontent_id IS NULL";
 		$menuitem = $db->query($sql2);
-		$onder = "";
+		$onder = "<option value='none'>None</option>";
 		$menuitem = $menuitem->fetch_all(MYSQLI_ASSOC);
 		for ($i=0; $i < count($menuitem); $i++) {
-			$onder .= "<option value='".$menuitem[$i]['id']."'>".$menuitem[$i]['id']."</option>";
+			$onder .= "<option value='".$menuitem[$i]['id']."'>".$menuitem[$i]['menu']."</option>";
 		}
 	}
 	$allowed = false;

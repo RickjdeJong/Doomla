@@ -24,4 +24,5 @@
 		</div>
 	</article>
 	<script src="common/main.js"></script>
+	<?=$contact?>
 </body>

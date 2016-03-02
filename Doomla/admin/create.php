@@ -45,6 +45,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+		    		<label class="col-sm-2 control-label">underneath</label>
+		    		<div class="col-sm-10">
+				    	<select name="onder" required="required" class="form-control">
+				    		<?=$onder?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
 			    	<label class="col-sm-2 control-label">template</label>
 			    	<div class="col-sm-10">
 			    		<select name="template" required="required" class="form-control">
